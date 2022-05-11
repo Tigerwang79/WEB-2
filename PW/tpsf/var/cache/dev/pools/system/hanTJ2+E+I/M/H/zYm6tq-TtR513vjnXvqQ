@@ -1,0 +1,35 @@
+<?php //App%255CController%255CSandbox%255CSandboxRouteController%2523test3Action
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
+    ],
+    null,
+    [
+        'Symfony\\Component\\Routing\\Annotation\\Route' => [
+            'path' => [
+                '/test3/{year}/{month}/{filename}.{ext}',
+            ],
+            'name' => [
+                '_test3',
+            ],
+            'requirements' => [
+                [
+                    'year' => '[1-9]\\d{0,3}',
+                    'month' => '(0?[1-9])|(1[0-2])',
+                    'filename' => '[A-Za-z-]+',
+                    'ext' => 'jpg|jpeg|png|ppm',
+                ],
+            ],
+            'defaults' => [
+                [
+                    'ext' => 'png',
+                ],
+            ],
+        ],
+    ],
+    [
+        $o[0],
+    ],
+    []
+); }];

@@ -1,0 +1,22 @@
+{% extends 'Sandbox/Layouts/layout4.html.twig' %}
+
+{% block title %}{{ parent() }} : Doctrine{% endblock %}
+
+{% block titre_principal %}Doctrine : list{% endblock %}
+
+{% block vue %}
+    <h2>Liste de tous les films</h2>
+    {{ dump(films) }}
+    <table>
+        <tr><th>id</th><th>nom</th></tr>
+        {% for film in films %}
+            <tr>
+                {% set urlView = path('sandbox_doctrine_view', {'id' : film.id}) %}
+                {% set urlDelete = path('sandbox_doctrine_delete', {'id' : film.id}) %}
+                <td>{{ film.id }}</td>
+                <td><a href="{{ urlView }}">{{ film.nom }}</a></td>
+                <td>(!) <a href="{{ urlDelete }}">delete</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

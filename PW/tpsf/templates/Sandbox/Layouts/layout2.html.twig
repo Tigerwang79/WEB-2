@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title>{% block title %}Sandbox{% endblock %}</title>
+        <meta charset="UTF-8" />
+    </head>
+    <body>
+        <div id="vue">
+            <h1>{% block titre_principal %}<!-- ici le bloc titre_principal -->{% endblock %}</h1>
+            {% block vue %}<!-- ici le bloc vue -->{% endblock %}
+        </div>
+    </body>
+    <footer>
+        <div id="footer">
+            <!-- ici inclusion du template footer.html.twig -->
+            {% include 'Sandbox/Layouts/footer.html.twig' %}
+        </div>
+    </footer>
+</html>

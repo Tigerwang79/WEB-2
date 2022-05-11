@@ -1,0 +1,27 @@
+<?php //App%255CController%255CSandbox%255CSandboxRouteController%2523test4bisAction
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
+    ],
+    null,
+    [
+        'Symfony\\Component\\Routing\\Annotation\\Route' => [
+            'path' => [
+                '/test4/{year}',
+            ],
+            'name' => [
+                '_test4bis',
+            ],
+            'requirements' => [
+                [
+                    'year' => '[1-9]\\d{0,3}',
+                ],
+            ],
+        ],
+    ],
+    [
+        $o[0],
+    ],
+    []
+); }];

@@ -1,0 +1,23 @@
+{% extends 'Sandbox/Layouts/layout4.html.twig' %}
+
+{% block title %}{{ parent() }} : Produit{% endblock %}
+
+{% block titre_principal %}Produit : vue{% endblock %}
+
+{% block vue %}
+    <h2>Détails du produit n°{{ id }}</h2>
+
+    <p><a href="{{ path('sandbox_produit_list') }}">Retour à la liste des produits</a></p>
+
+    {% if produit is null %}
+        <p>Le produit {{ id }} n'existe pas</p>
+    {% else %}
+        <ul>
+            <li>id : {{ produit.id }}</li>
+            <li>nom : {{ produit.denomination }}</li>
+            <li>code : {{ produit.code }}</li>
+            <li>actif : {{ produit.actif }} €</li>
+            <li>descriptif : {{ produit.descriptif }}</li>
+        </ul>
+    {% endif %}
+{% endblock %}

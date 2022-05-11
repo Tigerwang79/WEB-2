@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Display Flash</title>
+    </head>
+    <body>
+        <h2>type "info"</h2>
+        <ul>
+            {% for msg in app.session.flashBag.get('info') %}
+                <li>{{ msg }}</li>
+            {% endfor %}
+        </ul>
+        <h2>type "error"</h2>
+            {% for msg in app.session.flashBag.get('error') %}
+                <li>{{ msg }}</li>
+            {% endfor %}
+    </body>
+</html>

@@ -1,0 +1,22 @@
+{% extends 'Sandbox/Layouts/layout4.html.twig' %}
+
+{% block title %}{{ parent() }} : Produit{% endblock %}
+
+{% block titre_principal %}Produit : list{% endblock %}
+
+{% block vue %}
+    <h2>Liste de tous les produits</h2>
+    {{ dump(produits) }}
+    <table cellspacing="10">
+        <tr><th>id</th><th>nom</th></tr>
+        {% for produit in produits %}
+            <tr>
+                {% set urlView = path('sandbox_produit_view', {'id' : produit.id}) %}
+                {% set urlDelete = path('sandbox_produit_delete', {'id' : produit.id}) %}
+                <td>{{ produit.id }}</td>
+                <td>{{ produit.denomination }}</td>
+                <td>(!) <a href="{{ urlDelete }}">delete</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
