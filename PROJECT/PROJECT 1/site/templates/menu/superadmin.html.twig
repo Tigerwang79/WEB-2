@@ -1,0 +1,8 @@
+{% for roles in app.user.roles %}
+    {% if roles == "ROLE_SUPER_ADMIN" %}
+        <li>
+            <a href="{{ path('super_admin_modif', {'id':app.user.id}) }}">Profil</a>
+            <a href="{{ path('super_admin_listadmins') }}">Administration</a>
+        </li>
+    {% endif %}
+{% endfor %}
