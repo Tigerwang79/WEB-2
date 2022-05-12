@@ -1,0 +1,44 @@
+{% extends 'base/base.html.twig' %}
+
+{% block vue %}
+    <h1>Liste des Utilisateurs</h1>
+    <br>
+    <br>
+    <table class="table" style="border-spacing: 75px 1rem">
+        <thead>
+        <th>Identifiant</th>
+        <th>Mot de passe</th>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Date de naissance</th>
+        <th>Rôles</th>
+        <th>Action</th>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.password }}</td>
+                    <td>{{ user.nom }}</td>
+                    <td>{{ user.prenom }}</td>
+                    <td>{{ user.birthday | date('d/m/Y')  }}</td>
+                    <td>
+                        {% for role in user.roles %}
+                            {% if role == "ROLE_CLIENT" %}
+                                Client
+                            {% else%}
+                            {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td><a href="{{ path('admin_edit_user', {'id' : user.id})  }} ">Modifier</a>
+                        <a href="{{ path('admin_delete_user', {'id' : user.id})  }}">Supprimer</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="7"> Il n'y a pas d'utilisateur inscrit</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

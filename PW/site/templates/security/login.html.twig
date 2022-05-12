@@ -1,0 +1,62 @@
+{% extends 'base/base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+    {% block header %}
+        <nav class="nav">
+            {#Renvoie l'utilisateur à la page d'accueil#}
+            <a style="font-size: 35px;line-height: 80px;padding: 50px;font-weight: bold;" href="{{ path('site') }}" >GPUStore</a>
+            <ul>
+                {#en fonction de si on est connecté ou non, un menu s'affiche pour l'utilisateur#}
+                {% if not app.user %}
+                    {{ render(controller('App\\Controller\\SiteController::routeAnonyme')) }}
+                {% else %}
+                    {{ render(controller('App\\Controller\\AdminController::routeSuperAdmin')) }}
+                    {{ render(controller('App\\Controller\\SiteController::routeAdmin')) }}
+                    {{ render(controller('App\\Controller\\SiteController::routeUtilisateur')) }}
+
+                    <li>
+                        <a href="{{ path('security_app_logout') }}">Déconnexion</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    {% endblock %}
+    <form method="post">
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        {% if app.user %}
+            <div class="mb-3">
+                You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+            </div>
+        {% endif %}
+
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <label for="inputUsername">Username</label>
+        <input type="text" value="{{ last_username }}" name="_username" id="inputUsername" class="form-control" autocomplete="_username" required autofocus>
+        <label for="inputPassword">Password</label>
+        <input type="password" name="_password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+        <input type="hidden" name="_csrf_token"
+               value="{{ csrf_token('authenticate') }}"
+        >
+            <br>
+            <br>
+
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" name="_remember_me"> Remember me
+                </label>
+            </div>
+
+            <br>
+            <br>
+
+        <button class="btn btn-lg btn-primary" type="submit">
+            Sign in
+        </button>
+    </form>
+{% endblock %}

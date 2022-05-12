@@ -1,0 +1,36 @@
+{% extends 'base/base.html.twig'%}
+
+{% block vue %}
+    <form method="post">
+        <table class="table" style="border-spacing: 75px 1rem">
+            <thead>
+            <th>Libellé</th>
+            <th>Prix</th>
+            <th>Stock</th>
+            <th>Choix</th>
+            </thead>
+            <tbody>
+            {% for product in products %}
+            <tr>
+                <td>{{product.libelle}}</td>
+                <td>{{product.prix}} €</td>
+                <td>{{product.quantite}}</td>
+                <td>
+                    {% if product.quantite == 0 %}
+                    {% else %}
+                        <label>
+                            <select name="choix[]">
+                                {% for i in 0..product.quantite %}
+                                    <option value="{{ i }}" >{{ i }}</option>
+                                {% endfor %}
+                            </select>
+                        </label>
+                    {% endif %}
+                </td>
+                {% endfor %}
+            </tr>
+            </tbody>
+        </table>
+        <br><br><br><button type="submit" style="padding: 5px 15px;">Commander</button>
+    </form>
+{% endblock %}

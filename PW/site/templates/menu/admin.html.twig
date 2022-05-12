@@ -1,0 +1,15 @@
+{% for roles in app.user.roles %}
+    {% if roles == "ROLE_ADMIN" %}
+        <li>
+            <a href="{{ path('admin_add_product') }}">Ajouter un produit</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_users') }}">Administration</a>
+
+        </li>
+
+        <li>
+            <a href="https://fr.wikipedia.org/wiki/The_Truman_Show" target="_blank">The Truman Show</a>
+        </li>
+    {% endif %}
+{% endfor %}
